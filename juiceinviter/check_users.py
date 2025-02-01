@@ -14,10 +14,6 @@ invite_table = airtable_client.table(env.airtable_base_id, env.airtable_table_id
 CHANNEL_ID = "C088UF12N1Z"
 
 async def check_users():
-    await env.slack_client.chat_postMessage(
-        channel="U054VC2KM9P",
-        text = "Juicing started"
-    )
     users = invite_table.all(formula="NOT({inChannel})")
     errors = []
     for invite in users:
@@ -85,11 +81,11 @@ async def check_users():
                 )
                 invite_table.update(invite["id"], {"inChannel": True})
                 
-    print('Juicing complete!')
-    await env.slack_client.files_upload_v2(
-            channel="D08BJNNU95X",
-            content=str(errors),
-            initial_comment=f"Juicing complete! {len(errors)} errors.",
-        )
+    if len(errors) > 0:
+        await env.slack_client.files_upload_v2(
+                channel="D08BJNNU95X",
+                content=str(errors),
+                initial_comment=f"Juicing complete! {len(errors)} errors.",
+            )
         
     await sleep(5*60)

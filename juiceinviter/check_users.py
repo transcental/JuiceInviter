@@ -89,7 +89,7 @@ async def check_users():
     await env.slack_client.files_upload_v2(
             channel="U054VC2KM9P",
             content=str(errors),
-            initial_comment="Juicing complete! {len(errors)} errors.",
+            initial_comment=f"Juicing complete! {len(errors)} errors.",
         )
         
     await sleep(5*60)

@@ -92,4 +92,4 @@ async def check_users():
             initial_comment="Juicing complete! {len(errors)} errors.",
         )
         
-    await sleep(30*60)
+    await sleep(5*60)

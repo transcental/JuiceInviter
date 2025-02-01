@@ -1,11 +1,10 @@
-FROM python:3.13-slim
+FROM ghcr.io/astral-sh/uv:latest
+
+ADD . /app
 
 WORKDIR /app
 
-COPY . .
-
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-RUN uv sync
+RUN uv sync --frozen
 
 EXPOSE 3000
 

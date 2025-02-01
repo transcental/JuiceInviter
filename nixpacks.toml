@@ -2,7 +2,7 @@ providers = ["python"]
 nixPkgs = ["...", "uv"]
 
 [phases.build]
-script = "uv sync"
+cmd = "uv sync"
 
 [start]
-script = "juiceinviter"
+cmd = "juiceinviter"

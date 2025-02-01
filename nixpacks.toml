@@ -4,7 +4,7 @@ providers = ["python"]
 nixPkgs = ["...", "uv"]
 
 [phases.install]
-cmds = ["uv sync --frozen"]
+cmds = ["uv sync"]
 
 [start]
 cmd = "juiceinviter"

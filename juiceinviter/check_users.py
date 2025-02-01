@@ -35,6 +35,9 @@ async def check_users():
                     res = await invite_user_to_slack(invite["fields"]["email"])
                     if not res:
                         errors.append(invite["fields"]["email"])
+                    else:
+                        invite_table.update(invite["id"], {"inChannel": True})
+                    continue
                 else:
                     logging.error(f"Something really failed: {e}", exc_info=True)
                     continue

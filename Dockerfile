@@ -1,4 +1,5 @@
-FROM ghcr.io/astral-sh/uv:debian
+FROM python:3.13-slim-bookworm
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 ADD . /app
 
@@ -9,4 +10,6 @@ RUN uv sync --frozen
 
 EXPOSE 3000
 
-CMD ["python", "-m", "juiceinviter"]
+ENV PATH="/app/.venv/bin:$PATH"
+
+CMD ["juiceinviter"]

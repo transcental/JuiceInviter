@@ -4,6 +4,7 @@ ADD . /app
 
 WORKDIR /app
 
+RUN uv python install
 RUN uv sync --frozen
 
 EXPOSE 3000

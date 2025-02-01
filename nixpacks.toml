@@ -1,0 +1,8 @@
+providers = ["python"]
+nixPkgs = ["...", "uv"]
+
+[phases.build]
+script = "uv sync"
+
+[start]
+script = "juiceinviter"

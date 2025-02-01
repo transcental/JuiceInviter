@@ -9,4 +9,4 @@ RUN uv sync --frozen
 
 EXPOSE 3000
 
-CMD ["uvx", "juiceinviter"]
+CMD ["python", "-m", "juiceinviter"]
